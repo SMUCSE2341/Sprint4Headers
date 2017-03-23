@@ -4,11 +4,19 @@
 #include <iostream>
 
 template <class T>
-struct ListNode
+class ListNode
 {
-    ListNode<T>* next;
-    ListNode<T>* prev;
-    T data;
+    template <class U> friend class LinkedList;
+
+    public:
+        ListNode(): next(nullptr), prev(nullptr) {}
+        ListNode(T val): next(nullptr), prev(nullptr), data(val) {}
+        ListNode(const ListNode<T>& rhs): next(nullptr), prev(nullptr), data(rhs.data) {}
+
+    private:
+        ListNode<T>* next;
+        ListNode<T>* prev;
+        T data;
 };
 
 template<class T>
